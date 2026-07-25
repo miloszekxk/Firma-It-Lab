@@ -1,0 +1,1 @@
+Skonfigurowano pfSense jako firewall brzegowy oddzielający sieć wewnętrzną (LAN 192.168.1.0/24) od internetu (WAN przez NAT). Wyłączono blokowanie sieci RFC1918 na WAN ze względu na charakter środowiska testowego (NAT VirtualBox przydziela adres prywatny).
