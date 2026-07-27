@@ -24,6 +24,8 @@ Projekt zbudowany w VirtualBox na pojedynczym hoście. Dokumentacja obejmuje pi�
  .1.10        .1.20           .1.30          DHCP
 ```
 
+Edytowalny schemat: `diagram/topologia-sieci.drawio`.
+
 Druga karta sieciowa na serwerach Debian (`enp0s8`) pracuje w sieci Host-only `192.168.56.0/24` i służy wyłącznie do zarządzania z hosta (SSH, dostęp do paneli webowych).
 
 ## Hosty
@@ -71,6 +73,8 @@ Get-ADUser -Filter * | Select Name, SamAccountName
 ```
 
 ![Skrypt tworzący konta użytkowników](screeny/07-powershell-skrypt-uzytkownicy.png)
+
+Pełny skrypt: `skrypty/tworz-uzytkownikow.ps1`.
 
 Konta w domenie: `jan.kowalski`, `anna.nowak`, `piotr.wisniewski`, `maria.zielinska`, `tomasz.lewandowski` oraz konto serwisowe `glpi-bind`.
 
@@ -294,6 +298,8 @@ Uwierzytelnianie do MariaDB realizowane przez plik poświadczeń `/opt/backup/.m
 
 Skrypt wymaga uprawnień roota - katalog `files/_sessions` oraz `config/oauth.pem` należą do `www-data`, przez co uruchomienie z konta zwykłego użytkownika kończy się błędem `Permission denied` na etapie archiwizacji. Uruchomienie przez `sudo` obejmuje cały katalog.
 
+Pełny skrypt: `skrypty/backup-glpi.sh`.
+
 ![Wynik skryptu kopii zapasowej](screeny/50-backup-glpi-skrypt-wynik.png)
 
 Automatyzacja przez cron - kopia codziennie o 02:00, wyjście przekierowane do logu:
@@ -342,6 +348,11 @@ Pozostała dokumentacja etapu: `50`–`56`
 ```
 .
 ├── README.md
+├── skrypty/
+│   ├── tworz-uzytkownikow.ps1   zakladanie kont AD i struktury OU
+│   └── backup-glpi.sh           kopia zapasowa GLPI (baza + pliki)
+├── diagram/
+│   └── topologia-sieci.drawio   edytowalny schemat sieci
 └── screeny/
     ├── 01-04  konfiguracja sieci i pfSense
     ├── 05-18  Active Directory, GPO, serwer plikow
