@@ -24,7 +24,9 @@ Projekt zbudowany w VirtualBox na pojedynczym hoście. Dokumentacja obejmuje pi�
  .1.10        .1.20           .1.30          DHCP
 ```
 
-Edytowalny schemat: `diagram/topologia-sieci.drawio`.
+![Topologia sieci](diagram/topologia-sieci.png)
+
+Wersja edytowalna: `diagram/topologia-sieci.drawio`.
 
 Druga karta sieciowa na serwerach Debian (`enp0s8`) pracuje w sieci Host-only `192.168.56.0/24` i służy wyłącznie do zarządzania z hosta (SSH, dostęp do paneli webowych).
 
