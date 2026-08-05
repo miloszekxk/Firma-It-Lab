@@ -345,6 +345,15 @@ Konfiguracja firewalla eksportowana do pliku XML (Diagnostics -> Backup & Restor
 
 Pozostała dokumentacja etapu: `50`–`56`
 
+## Runbooki
+
+Krótkie procedury diagnostyczne dla typowych zgłoszeń helpdeskowych w tym
+środowisku, w katalogu `runbooki/`:
+
+- [`01-glpi-logowanie-domenowe.md`](runbooki/01-glpi-logowanie-domenowe.md) - użytkownik nie może zalogować się do GLPI kontem domenowym
+- [`02-brak-dostepu-dysk-sieciowy.md`](runbooki/02-brak-dostepu-dysk-sieciowy.md) - brak dostępu do zmapowanego dysku sieciowego
+- [`03-zabbix-brak-danych-z-hosta.md`](runbooki/03-zabbix-brak-danych-z-hosta.md) - Zabbix zgłasza brak danych z hosta
+
 ## Struktura repozytorium
 
 ```
@@ -355,6 +364,10 @@ Pozostała dokumentacja etapu: `50`–`56`
 │   └── backup-glpi.sh           kopia zapasowa GLPI (baza + pliki)
 ├── diagram/
 │   └── topologia-sieci.drawio   edytowalny schemat sieci
+├── runbooki/
+│   ├── 01-glpi-logowanie-domenowe.md
+│   ├── 02-brak-dostepu-dysk-sieciowy.md
+│   └── 03-zabbix-brak-danych-z-hosta.md
 └── screeny/
     ├── 01-04  konfiguracja sieci i pfSense
     ├── 05-18  Active Directory, GPO, serwer plikow
