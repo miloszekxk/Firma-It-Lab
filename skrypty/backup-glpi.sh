@@ -23,6 +23,13 @@ FILES="${BACKUP_DIR}/glpi-files_${DATA}.tar.gz"
 
 log() { echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*"; }
 
+# przy bledzie usun niedokonczone pliki, zeby nie zostawic uszkodzonej kopii
+sprzatnij() {
+  log "BLAD - backup przerwany, usuwam niepelne pliki"
+  rm -f "$DUMP" "$FILES"
+}
+trap sprzatnij ERR
+
 mkdir -p "$BACKUP_DIR"
 log "Start backupu GLPI"
 
@@ -37,6 +44,8 @@ log "  pliki -> $(basename "$FILES")"
 if [ "$RETENCJA_DNI" -gt 0 ]; then
   find "$BACKUP_DIR" -type f -name '*.gz' -mtime +"$RETENCJA_DNI" -delete
 fi
+
+trap - ERR
 
 ROZMIAR="$(du -ch "$DUMP" "$FILES" | awk 'END {print $1}')"
 log "Zakonczono. Laczny rozmiar kopii: ${ROZMIAR}"

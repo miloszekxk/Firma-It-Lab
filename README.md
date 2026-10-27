@@ -60,7 +60,7 @@ Usługi na pfSense: DHCP dla segmentu LAN, resolver DNS, reguły filtrowania ruc
 
 ![Panel pfSense](screeny/04-pfsense-dashboard.png)
 
-Pozostała dokumentacja etapu: `01`–`04`
+Pozostała dokumentacja etapu: zrzuty `01`–`04` w katalogu [`screeny/`](screeny)
 
 ## Etap 2: Active Directory
 
@@ -76,7 +76,7 @@ Get-ADUser -Filter * | Select Name, SamAccountName
 
 ![Skrypt tworzący konta użytkowników](screeny/07-powershell-skrypt-uzytkownicy.png)
 
-Pełny skrypt: `skrypty/tworz-uzytkownikow.ps1`.
+Pełny skrypt: [`skrypty/tworz-uzytkownikow.ps1`](skrypty/tworz-uzytkownikow.ps1), dane kont: [`skrypty/uzytkownicy.csv`](skrypty/uzytkownicy.csv). Hasło startowe podawane jest przy uruchomieniu, a konta już istniejące są pomijane.
 
 Konta w domenie: `jan.kowalski`, `anna.nowak`, `piotr.wisniewski`, `maria.zielinska`, `tomasz.lewandowski` oraz konto serwisowe `glpi-bind`.
 
@@ -98,7 +98,7 @@ gpresult /r
 
 ![Weryfikacja zastosowanych polityk GPO](screeny/18-gpresult-weryfikacja.png)
 
-Pozostała dokumentacja etapu: `05`–`18`
+Pozostała dokumentacja etapu: zrzuty `05`–`18` w katalogu [`screeny/`](screeny)
 
 ## Etap 3: System zgłoszeń GLPI
 
@@ -143,7 +143,7 @@ Efekt: pracownik loguje się do GLPI poświadczeniami domenowymi, wybierając ź
 
 ![Sesja użytkownika domenowego w GLPI](screeny/28-glpi-anna-zalogowana-selfservice.png)
 
-Pozostała dokumentacja etapu: `19`–`28`
+Pozostała dokumentacja etapu: zrzuty `19`–`28` w katalogu [`screeny/`](screeny)
 
 ## Etap 4: Monitoring
 
@@ -290,7 +290,7 @@ Trigger `Zabbix agent is not available (for 3m)` wykrył niedostępność hosta,
 
 ![Zdarzenie zamknięte po przywróceniu usługi](screeny/45-zabbix-problem-rozwiazany.png)
 
-Pozostała dokumentacja etapu: `29`–`49`
+Pozostała dokumentacja etapu: zrzuty `29`–`49` w katalogu [`screeny/`](screeny)
 
 ## Etap 5: Kopia zapasowa i odtwarzanie
 
@@ -300,7 +300,7 @@ Uwierzytelnianie do MariaDB realizowane przez plik poświadczeń `/opt/backup/.m
 
 Skrypt wymaga uprawnień roota - katalog `files/_sessions` oraz `config/oauth.pem` należą do `www-data`, przez co uruchomienie z konta zwykłego użytkownika kończy się błędem `Permission denied` na etapie archiwizacji. Uruchomienie przez `sudo` obejmuje cały katalog.
 
-Pełny skrypt: `skrypty/backup-glpi.sh`.
+Pełny skrypt: [`skrypty/backup-glpi.sh`](skrypty/backup-glpi.sh). W razie błędu skrypt usuwa niedokończone pliki, żeby w katalogu kopii nie zostały uszkodzone archiwa.
 
 ![Wynik skryptu kopii zapasowej](screeny/50-backup-glpi-skrypt-wynik.png)
 
@@ -343,7 +343,7 @@ Konfiguracja firewalla eksportowana do pliku XML (Diagnostics -> Backup & Restor
 
 ![Eksport konfiguracji pfSense](screeny/56-pfsense-backup-restore.png)
 
-Pozostała dokumentacja etapu: `50`–`56`
+Pozostała dokumentacja etapu: zrzuty `50`–`56` w katalogu [`screeny/`](screeny)
 
 ## Runbooki
 
@@ -360,10 +360,12 @@ Krótkie procedury diagnostyczne dla typowych zgłoszeń helpdeskowych w tym
 .
 ├── README.md
 ├── skrypty/
-│   ├── tworz-uzytkownikow.ps1   zakladanie kont AD i struktury OU
+│   ├── tworz-uzytkownikow.ps1   zakladanie kont AD na podstawie pliku CSV
+│   ├── uzytkownicy.csv          lista pracownikow (imie, login, dzial, stanowisko)
 │   └── backup-glpi.sh           kopia zapasowa GLPI (baza + pliki)
 ├── diagram/
-│   └── topologia-sieci.drawio   edytowalny schemat sieci
+│   ├── topologia-sieci.drawio   edytowalny schemat sieci
+│   └── topologia-sieci.png      schemat w formie obrazu
 ├── runbooki/
 │   ├── 01-glpi-logowanie-domenowe.md
 │   ├── 02-brak-dostepu-dysk-sieciowy.md

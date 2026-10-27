@@ -12,6 +12,12 @@ foreach ($u in $uzytkownicy) {
     $ouPath = "OU=$($u.Dzial),OU=Dzialy,DC=firma,DC=local"
     $nazwaWyswietlana = "$($u.Imie) $($u.Nazwisko)"
 
+    # Ponowne uruchomienie skryptu nie konczy sie bledami dla istniejacych kont
+    if (Get-ADUser -Filter "SamAccountName -eq '$($u.Login)'") {
+        Write-Host "Pominieto: $($u.Login) juz istnieje" -ForegroundColor Yellow
+        continue
+    }
+
     try {
         New-ADUser `
             -Name $nazwaWyswietlana `
